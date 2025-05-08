@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 4 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<div class="contact form" style="background-color:#0f1035; color: white; padding: 4rem;">
+  <div class="row">
+    <!-- Contact Form -->
+    <div class="col-md-6 mb-4">
+      <h3 style="color: #ff3399; font-weight: bold;">Just say Hello !</h3>
+      <p style="margin-bottom: 30px;">Let us know more about you !</p>
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" style="background-color: #2e3a67; border: none; color: white;">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" style="background-color: #2e3a67; border: none; color: white;">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <input type="email" class="form-control" id="email" placeholder="Email" style="background-color: #2e3a67; border: none; color: white;">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="tel" class="form-control" id="phone" placeholder="Phone" style="background-color: #2e3a67; border: none; color: white;">
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" id="message" rows="4" placeholder="Message" style="background-color: #2e3a67; border: none; color: white;"></textarea>
+        </div>
+        <button type="submit" class="btn" style="background-color: #ff3399; color: white; font-weight: bold; padding: 8px 25px; border-radius: 5px;">SUBMIT</button>
+      </form>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="col-md-6" style="text-align: end;">
+      <h5 style="color: #ff3399; font-weight: bold;">Contact Information</h5>
+      <p style="margin-top: 20px;">
+        3 W. Auglaize St.<br>
+        P.O. Box 37<br>
+        Wapakoneta, OH 45895
+      </p>
+      <p>Email: <a href="mailto:riversideartcenter@gmail.com" style="color: #ffcccc;">riversideartcenter@gmail.com</a></p>
+      <p>Phone: <span style="font-weight: bold;">419-738-2352</span></p>
+      <p>
+        Open Hours:<br>
+        Wednesday - Friday: 12:00 PM - 4:00 PM<br>
+        Saturday: 10:00 AM - 2:00 PM
+      </p>
+      <h6 style="color: #ff3399; font-weight: bold; margin-top: 30px;">Follow Us</h6>
+      <p>
+        <a href="#" style="color: white;">instagram</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!firstName || !lastName || !email || !phone || !message) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Form Incomplete',
+        text: 'Please fill in all fields.',
+      });
+      return;
+    }
+
+    if (!/^\d+$/.test(phone)) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid Phone Number',
+        text: 'Phone number must contain only digits.',
+      });
+      return;
+    }
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Message Sent!',
+      text: 'Thank you for contacting us.',
+    });
+
+    document.querySelector("form").reset();
+  });
+</script>
+
+<!-- Bootstrap 4 JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
